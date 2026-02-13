@@ -1,7 +1,14 @@
 ﻿services:
-  webapplication1:
-    image: webapplication1
-    build:
-      context: .
-      dockerfile: Dockerfile
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: ecommerce_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
 
+volumes:
+  pgdata:
